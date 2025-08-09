@@ -1,38 +1,21 @@
-"use client";
-import * as React from "react";
-import Login from "./login";
-import LandingPage from "./welcome/page";
-import { useRouter } from 'next/navigation';
+import Header from "./header";
+import { redirect } from "next/navigation";
+import { createClient } from "../../utils/supabase/server";
 
-interface loginProps{
-    handleLogin: () => void;
-    isLoggedIn: boolean;
-}
+export default async function LandingPage(){
+    const supabase = await createClient();
 
-export default function Home() {
-  const [loggedIn, setLoggedIn] = React.useState(false);
-  function handleLogin() {
-    setLoggedIn(!loggedIn);
-  }
-  console.log(loggedIn);
-
-  return (
-    <div>
-
-      <CheckLogin handleLogin={handleLogin} isLoggedIn={loggedIn}/>
-    </div>
-  );
-}
-
-function CheckLogin(
-  {handleLogin, isLoggedIn}: loginProps
-){
-  React.useEffect(() => {
-    if(isLoggedIn === true){
-      window.history.replaceState(null, '', '/welcome');
+    const { data, error } = await supabase.auth.getUser()
+    if (error || !data?.user) {
+        redirect('/login');
     }
-  })
-  return(
-    <Login handleLogin={handleLogin} isLoggedIn={isLoggedIn}/>
-  );
+
+    return(
+        <div className="bg-red-800 w-auto h-[100vh]">
+            <Header/>
+            <div className="grid grid-cols-4">
+                <p>Hello, {data.user.email} </p>
+            </div>
+        </div>
+    );
 }
