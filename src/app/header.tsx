@@ -3,7 +3,7 @@ import Sidebar from "./sidebar";
 
 export default function Header(){
     function handleClick(){
-        var sidebarDisplay = document.getElementById("sidebar")!.style.display;
+        let sidebarDisplay = document.getElementById("sidebar")!.style.display;
         if(sidebarDisplay != 'none'){
             document.getElementById('sidebar')!.style.display = 'none';
         }
