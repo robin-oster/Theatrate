@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "../../../utils/supabase/server";
+import { AuthApiError } from "@supabase/supabase-js";
 
 export async function login(formData: FormData){
     const supabase = await createClient();
@@ -14,13 +15,14 @@ export async function login(formData: FormData){
 
     const { error } = await supabase.auth.signInWithPassword(data);
 
-    if (error) {
-        console.log('error: ' + error)
+    if (error != null && error.code == 'invalid_credentials') {
+        console.log(error.code);
         redirect('/error');
     }
-
-    revalidatePath('/', 'layout');
-    redirect('/');
+    else{
+        revalidatePath('/', 'layout');
+        redirect('/');
+    }
 }
 
 export async function signup(formData: FormData){
