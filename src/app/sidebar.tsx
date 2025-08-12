@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Sidebar(){
     function handleClick(){
-        let sidebarDisplay = document.getElementById("sidebar")!.style.display;
+        const sidebarDisplay = document.getElementById("sidebar")!.style.display;
         if(sidebarDisplay != 'none'){
             document.getElementById('sidebar')!.style.display = 'none';
         }
