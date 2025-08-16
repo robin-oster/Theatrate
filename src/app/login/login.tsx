@@ -10,7 +10,7 @@ export default function Login(){
                 <div className="w-3/4 h-1/3 flex justify-center items-center bg-red-800 border-black 
                     border-3 shadow-2xl">  
                     <form className="w-3/4" method="post">
-                    <h1 className="w-1/1 text-center mb-2 text-white text-2xl font-bold">T h e a t r a t e</h1>
+                    <h1 className="w-1/1 text-center mb-2 text-white text-2xl font-bold">T h e a t e r a t e</h1>
                         <input type="email" id="email" name="email" placeholder="Enter email..." className="bg-black p-2 mb-4 font-bold w-1/1" required/>
                         <input type="password" id="password" name="password" placeholder="Enter password..." className="bg-black p-2 mb-4 font-bold w-1/1" required/>
                         <button formAction={login} className="bg-black p-2 w-1/1">Login here!</button>

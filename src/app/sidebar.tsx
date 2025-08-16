@@ -14,7 +14,7 @@ export default function Sidebar(){
     }
 
     return(
-        <div className="w-[20rem] h-[100vh] bg-black absolute block z-5" id="sidebar">
+        <div className="w-[20rem] h-[100vh] bg-black absolute hidden z-5" id="sidebar">
             <div className="flex w-1/1 h-[2rem] justify-end p-2 mb-[2rem]">
                 <p className="white text-xl hover:font-extrabold mr-2" onClick={handleClick}>Close</p>
                 <img src="/icons8-x-90.png" className="mb-[-1rem]" onClick={handleClick}/>

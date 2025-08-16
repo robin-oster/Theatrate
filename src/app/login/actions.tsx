@@ -41,6 +41,7 @@ export async function signup(formData: FormData){
     }
     else{
         console.log("email sent");
+        redirect('/auth/confirm/email')
     }
 
     revalidatePath('/', 'layout');

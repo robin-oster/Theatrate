@@ -1,6 +1,8 @@
 import Header from "./header";
 import { redirect } from "next/navigation";
 import { createClient } from "../../utils/supabase/server";
+import Footer from "./footer";
+import GetTrendingMovies from "./api/trendingMovies";
 
 export default async function LandingPage(){
     const supabase = await createClient();
@@ -11,11 +13,12 @@ export default async function LandingPage(){
     }
 
     return(
-        <div className="bg-red-800 w-auto h-[100vh]">
+        <div className="bg-red-800 w-auto">
             <Header/>
-            <div className="grid grid-cols-4">
-                <p>Hello, {data.user.email} </p>
+            <div className="w-auto">
+                <GetTrendingMovies/>
             </div>
+            <Footer/>
         </div>
     );
 }
