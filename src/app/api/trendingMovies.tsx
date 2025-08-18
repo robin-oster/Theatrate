@@ -28,6 +28,7 @@ export default async function GetTrendingMovies(){
                 <h1 className="text-3xl text-center bg-red-950 p-2">{singleMovie["title"]}</h1>
                 <img src={"https://image.tmdb.org/t/p/original/" + singleMovie["poster_path"]} alt="No poster" className=""/>
                 <p className="p-2">{singleMovie["overview"]}</p>
+                <p className="p-2 font-bold">{singleMovie["vote_average"]} / 10</p>
                 
             </div>
         )
@@ -44,6 +45,10 @@ export default async function GetTrendingMovies(){
             {getMovieInfo(movies[5])}
             {getMovieInfo(movies[6])}
             {getMovieInfo(movies[7])}
+            {getMovieInfo(movies[8])}
+            {getMovieInfo(movies[9])}
+            {getMovieInfo(movies[10])}
+            {getMovieInfo(movies[11])}
         </div>
     )
 }
