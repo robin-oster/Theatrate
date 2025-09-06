@@ -1,3 +1,4 @@
+"use server";
 export default async function GetTrendingMovies(){
     
     const url = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US';
@@ -10,12 +11,14 @@ export default async function GetTrendingMovies(){
     };
 
     interface moviesType {
+        // eslint-disable-next-line  @typescript-eslint/no-explicit-any
         [index: string]: any
     }
 
     let movies: moviesType;
     movies = ["test"];
-    let i = 0;
+    let i: number;
+    i = 0;
 
     await fetch(url, options)
     .then(res => res.json())
@@ -24,17 +27,16 @@ export default async function GetTrendingMovies(){
 
     function getMovieInfo(singleMovie: moviesType){
         return(
-            <div className="w-auto border-white border-2 m-4 bg-red-950">
+            <div className="w-auto border-black border-2 m-4 bg-red-950">
                 <h1 className="text-3xl text-center bg-red-950 p-2">{singleMovie["title"]}</h1>
                 <img src={"https://image.tmdb.org/t/p/original/" + singleMovie["poster_path"]} alt="No poster" className=""/>
+                <p className="pl-2 pt-2 font-bold text-red-400">Rating: {singleMovie["vote_average"]} / 10</p>
+                <p className="pl-2 text-red-400">Release Date: {singleMovie["release_date"]} </p>
                 <p className="p-2">{singleMovie["overview"]}</p>
-                <p className="p-2 font-bold">{singleMovie["vote_average"]} / 10</p>
-                
             </div>
         )
     }
 
-    console.log(movies[1]);
     return(
         <div className="grid grid-cols-1 md:grid-cols-4 w-[100%]">
             {getMovieInfo(movies[0])}

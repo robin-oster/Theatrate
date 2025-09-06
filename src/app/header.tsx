@@ -31,9 +31,9 @@ export default function Header(){
             <button className="flex w-1/6 h-[8rem] justify-center items-center hover:bg-black" onClick={handleClick}>
                 <img src="/icons8-hamburger-button-50.png" alt="menu-bar"/>
             </button>
-            <div className="flex w-1/6 h-[8rem] justify-center items-center hover:bg-black">
+            <a href="/" className="w-1/6"><div className="flex w-[100%] h-[8rem] justify-center items-center hover:bg-black">
                 <h1 className="md:text-3xl font-bold">HOME</h1>
-            </div>
+            </div></a>
             <div className="flex w-1/6 h-[8rem] justify-center items-center hover:bg-black" onClick={handleMovies}>
                 <h1 className="md:text-3xl font-bold">MOVIES</h1>
             </div>
