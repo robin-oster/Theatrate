@@ -1,36 +1,49 @@
 "use server";
 import handleSearchRequest from "./handleSearch";
 
-interface SearchMoviesProps {
+interface SearchMediaProps {
     queryText: string
 }
 
-interface moviesType {
+interface mediaType {
     // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     [index: string]: any
 }
 
-export default async function SearchMovies({queryText}: SearchMoviesProps) {
+export default async function SearchMedia({queryText}: SearchMediaProps, searchType: string) {
 
-    console.log(queryText);
-    let url = 'https://api.themoviedb.org/3/search/movie?query=' + queryText + '&include_adult=false&language=en-US&page=1';
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NTlmYjMwNTk1MmUwZDg4NzA0YmNjZjdjMDQ3MDkxZiIsIm5iZiI6MTc1NTIwNzc3MC42OTI5OTk4LCJzdWIiOiI2ODllNTg1YWI3N2E2ZmY0OTM1ZDI1Y2UiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.dy0VrMZUbY3wDk8NCpEVl-PDZZGrt9ESxtHg2-qfHD0'
-        }
-    };
+    let url = '';
+    let options = {};
+    if(searchType === "movie"){
+        url = 'https://api.themoviedb.org/3/search/movie?query=' + queryText + '&include_adult=false&language=en-US&page=1';
+        options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NTlmYjMwNTk1MmUwZDg4NzA0YmNjZjdjMDQ3MDkxZiIsIm5iZiI6MTc1NTIwNzc3MC42OTI5OTk4LCJzdWIiOiI2ODllNTg1YWI3N2E2ZmY0OTM1ZDI1Y2UiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.dy0VrMZUbY3wDk8NCpEVl-PDZZGrt9ESxtHg2-qfHD0'
+            }
+        };
+    }
+    else{
+        url = 'https://api.themoviedb.org/3/search/tv?query=' + queryText + '&include_adult=false&language=en-US&page=1';
+        options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NTlmYjMwNTk1MmUwZDg4NzA0YmNjZjdjMDQ3MDkxZiIsIm5iZiI6MTc1NTIwNzc3MC42OTI5OTk4LCJzdWIiOiI2ODllNTg1YWI3N2E2ZmY0OTM1ZDI1Y2UiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.dy0VrMZUbY3wDk8NCpEVl-PDZZGrt9ESxtHg2-qfHD0'
+            }
+        };
+    }
 
-    let movies: moviesType;
-    let moviesArray: moviesType;
+    let movies: mediaType;
+    let moviesArray: mediaType;
     moviesArray = ["test"];
     movies = ["test"];
 
     movies = await handleSearchRequest(url, options, movies);
     
 
-    function getMovieInfo(singleMovie: moviesType){ //return appropriate jsx for movie
+    function getMovieInfo(singleMovie: mediaType){ //return appropriate jsx for movie
         return(
             <div className="w-auto border-black border-2 m-4 bg-red-950">
                 <h1 className="text-3xl text-center bg-red-950 p-2">{singleMovie["title"]}</h1>
@@ -42,7 +55,7 @@ export default async function SearchMovies({queryText}: SearchMoviesProps) {
         )
     }
 
-    function getAllMovieInfo(movieArray: moviesType){
+    function getAllMovieInfo(movieArray: mediaType){
         let movieList = [];
         let movieToAdd = <p></p>;
         for(let i = 0; i < movieArray.length; i++){

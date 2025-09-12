@@ -25,7 +25,7 @@ export default async function GetTrendingShows(){
 
     function getShowInfo(singleShow: showsType){
         return(
-            <div className="w-auto border-white border-2 m-4 bg-red-950">
+            <div className="w-auto m-4 bg-red-950">
                 <h1 className="text-3xl text-center bg-red-950 p-2">{singleShow["name"]}</h1>
                 <img src={"https://image.tmdb.org/t/p/original/" + singleShow["poster_path"]} alt="No poster" className=""/>
                 <p className="pl-2 pt-2 font-bold text-red-400">Rating: {singleShow["vote_average"]} / 10</p>
