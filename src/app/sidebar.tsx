@@ -20,9 +20,7 @@ export default function Sidebar(){
                 <img src="/icons8-x-90.png" className="mb-[-1rem]" onClick={handleClick}/>
             </div>
             <div className="w-1/1 block">
-                <Link href='#' className="text-center w-auto block p-2 hover:bg-red-950">My Reviews</Link>
-                <Link href='#' className="text-center w-auto block p-2 hover:bg-red-950">Watch Later</Link>
-                <Link href='#' className="text-center w-auto block p-2 hover:bg-red-950">Following</Link>
+                <Link href='#' className="text-center w-auto block p-2 hover:bg-red-950">Log Out</Link>
             </div>
         </div>
     )

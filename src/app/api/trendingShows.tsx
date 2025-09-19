@@ -1,4 +1,7 @@
 "use server";
+
+import rateMovie from "./actions";
+
 export default async function GetTrendingShows(){
     
     const url = 'https://api.themoviedb.org/3/trending/tv/day?language=en-US';
@@ -31,6 +34,12 @@ export default async function GetTrendingShows(){
                 <p className="pl-2 pt-2 font-bold text-red-400">Rating: {singleShow["vote_average"]} / 10</p>
                 <p className="pl-2 text-red-400">Air Date: {singleShow["first_air_date"]} </p>
                 <p className="p-2">{singleShow["overview"]}</p>
+                <form action={rateMovie}>
+                    <button className="p-2 m-2 bg-red-700 hover:bg-red-500">Rate this Show</button>
+                    <input type="hidden" name="movieID" value={singleShow["id"]}/>
+                    <input type="number" name="rating" min="0" max="10" className="m-2 p-2 bg-black inline-block" />
+                    <p className="inline-block">/ 10</p>
+                </form>
             </div>
         )
     }

@@ -36,8 +36,8 @@ export default async function GetTrendingMovies(){
                 <p className="pl-2 pt-2 font-bold text-red-400">Rating: {singleMovie["vote_average"]} / 10</p>
                 <p className="pl-2 text-red-400">Release Date: {singleMovie["release_date"]} </p>
                 <p className="p-2">{singleMovie["overview"]}</p>
-                <form method="post" action={rateMovie}>
-                    <button className="p-2 m-2 bg-red-700 hover:bg-red-500">Rate this Movie:</button>
+                <form action={rateMovie}>
+                    <button className="p-2 m-2 bg-red-700 hover:bg-red-500">Rate this Movie</button>
                     <input type="hidden" name="movieID" value={singleMovie["id"]}/>
                     <input type="number" name="rating" min="0" max="10" className="m-2 p-2 bg-black inline-block" />
                     <p className="inline-block">/ 10</p>
