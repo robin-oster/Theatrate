@@ -1,6 +1,6 @@
 'use server';
 
-export default async function rateMovie(formData: FormData){
+export default async function rateMedia(formData: FormData){
     const url = 'https://api.themoviedb.org/3/movie/' + formData.get('movieID') + '/rating';
     const options = {
     method: 'POST',

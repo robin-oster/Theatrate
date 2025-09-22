@@ -18,8 +18,6 @@ export default function SearchPage(){
         updatedMedia.then(movies => {setSearchedMedia(movies)})
     }, [])
 
-    console.log(searchedMedia);
-
     return(
         <div className="bg-red-800 w-auto">
             <Header/>

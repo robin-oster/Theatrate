@@ -1,6 +1,6 @@
 "use server";
-import Form from "next/form";
-import rateMovie from "./actions";
+import { FormEvent } from "react";
+import {GetMovieInfo } from "./GetMediaInfo";
 
 export default async function GetTrendingMovies(){
     
@@ -28,39 +28,20 @@ export default async function GetTrendingMovies(){
     .then(json => {movies = json["results"]})
     .catch(err => console.error(err))
 
-    function getMovieInfo(singleMovie: moviesType){
-        return(
-            <div className="w-auto border-black border-2 m-4 bg-red-950">
-                <h1 className="text-3xl text-center bg-red-950 p-2">{singleMovie["title"]}</h1>
-                <img src={"https://image.tmdb.org/t/p/original/" + singleMovie["poster_path"]} alt="No poster" className=""/>
-                <p className="pl-2 pt-2 font-bold text-red-400">Rating: {singleMovie["vote_average"]} / 10</p>
-                <p className="pl-2 text-red-400">Release Date: {singleMovie["release_date"]} </p>
-                <p className="p-2">{singleMovie["overview"]}</p>
-                <form action={rateMovie}>
-                    <button className="p-2 m-2 bg-red-700 hover:bg-red-500">Rate this Movie</button>
-                    <input type="hidden" name="movieID" value={singleMovie["id"]}/>
-                    <input type="number" name="rating" min="0" max="10" className="m-2 p-2 bg-black inline-block" />
-                    <p className="inline-block">/ 10</p>
-                </form>
-                
-            </div>
-        )
-    }
-
     return(
         <div className="grid grid-cols-1 md:grid-cols-4 w-[100%]">
-            {getMovieInfo(movies[0])}
-            {getMovieInfo(movies[1])}
-            {getMovieInfo(movies[2])}
-            {getMovieInfo(movies[3])}
-            {getMovieInfo(movies[4])}
-            {getMovieInfo(movies[5])}
-            {getMovieInfo(movies[6])}
-            {getMovieInfo(movies[7])}
-            {getMovieInfo(movies[8])}
-            {getMovieInfo(movies[9])}
-            {getMovieInfo(movies[10])}
-            {getMovieInfo(movies[11])}
+            <GetMovieInfo singleMovie={movies[0]}/>
+            <GetMovieInfo singleMovie={movies[1]}/>
+            <GetMovieInfo singleMovie={movies[2]}/>
+            <GetMovieInfo singleMovie={movies[3]}/>
+            <GetMovieInfo singleMovie={movies[4]}/>
+            <GetMovieInfo singleMovie={movies[5]}/>
+            <GetMovieInfo singleMovie={movies[6]}/>
+            <GetMovieInfo singleMovie={movies[7]}/>
+            <GetMovieInfo singleMovie={movies[8]}/>
+            <GetMovieInfo singleMovie={movies[9]}/>
+            <GetMovieInfo singleMovie={movies[10]}/>
+            <GetMovieInfo singleMovie={movies[11]}/>
         </div>
     )
 }

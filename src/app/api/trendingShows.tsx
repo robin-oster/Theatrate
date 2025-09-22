@@ -1,6 +1,6 @@
 "use server";
 
-import rateMovie from "./actions";
+import { GetShowInfo } from "./GetMediaInfo";
 
 export default async function GetTrendingShows(){
     
@@ -26,38 +26,20 @@ export default async function GetTrendingShows(){
     .then(json => {shows = json["results"]})
     .catch(err => console.error(err))
 
-    function getShowInfo(singleShow: showsType){
-        return(
-            <div className="w-auto m-4 bg-red-950">
-                <h1 className="text-3xl text-center bg-red-950 p-2">{singleShow["name"]}</h1>
-                <img src={"https://image.tmdb.org/t/p/original/" + singleShow["poster_path"]} alt="No poster" className=""/>
-                <p className="pl-2 pt-2 font-bold text-red-400">Rating: {singleShow["vote_average"]} / 10</p>
-                <p className="pl-2 text-red-400">Air Date: {singleShow["first_air_date"]} </p>
-                <p className="p-2">{singleShow["overview"]}</p>
-                <form action={rateMovie}>
-                    <button className="p-2 m-2 bg-red-700 hover:bg-red-500">Rate this Show</button>
-                    <input type="hidden" name="movieID" value={singleShow["id"]}/>
-                    <input type="number" name="rating" min="0" max="10" className="m-2 p-2 bg-black inline-block" />
-                    <p className="inline-block">/ 10</p>
-                </form>
-            </div>
-        )
-    }
-
     return(
         <div className="grid grid-cols-1 md:grid-cols-4 w-[100%]">
-            {getShowInfo(shows[0])}
-            {getShowInfo(shows[1])}
-            {getShowInfo(shows[2])}
-            {getShowInfo(shows[3])}
-            {getShowInfo(shows[4])}
-            {getShowInfo(shows[5])}
-            {getShowInfo(shows[6])}
-            {getShowInfo(shows[7])}
-            {getShowInfo(shows[8])}
-            {getShowInfo(shows[9])}
-            {getShowInfo(shows[10])}
-            {getShowInfo(shows[11])}
+            <GetShowInfo singleShow={shows[0]}/>
+            <GetShowInfo singleShow={shows[1]}/>
+            <GetShowInfo singleShow={shows[2]}/>
+            <GetShowInfo singleShow={shows[3]}/>
+            <GetShowInfo singleShow={shows[4]}/>
+            <GetShowInfo singleShow={shows[5]}/>
+            <GetShowInfo singleShow={shows[6]}/>
+            <GetShowInfo singleShow={shows[7]}/>
+            <GetShowInfo singleShow={shows[8]}/>
+            <GetShowInfo singleShow={shows[9]}/>
+            <GetShowInfo singleShow={shows[10]}/>
+            <GetShowInfo singleShow={shows[11]}/>
         </div>
     )
 }
