@@ -1,9 +1,5 @@
 "use server";
 
-interface SearchMoviesProps {
-    queryText: string
-}
-
 interface moviesType {
     // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     [index: string]: any

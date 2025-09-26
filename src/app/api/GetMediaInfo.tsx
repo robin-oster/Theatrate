@@ -10,7 +10,10 @@ interface moviesType {
 function handleRatingUpdated(e: FormEvent<HTMLFormElement>, id: string){
     const { target } = e;
     if (target instanceof HTMLElement){
-        document.getElementById(id)!!.className = "block p-2 m-2 bold font-bold text-xl";
+        let doc = document.getElementById(id);
+        if(doc){
+            doc.className = "block p-2 m-2 bold font-bold text-xl";
+        }
     }
 }
 
@@ -44,7 +47,7 @@ function getMediaInfo(singleMovie: moviesType, searchType: string){ //return app
 }
 
 export function GetAllMediaInfo(movieArray: moviesType, searchType: string){
-    let movieList = [];
+    const movieList = [];
     let movieToAdd = <p></p>;
     movieArray = movieArray["moviesArray"];
     for(let i = 0; i < movieArray.length; i++){

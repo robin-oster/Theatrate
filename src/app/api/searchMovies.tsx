@@ -38,8 +38,6 @@ export default async function SearchMedia({queryText}: SearchMediaProps, searchT
     }
 
     let movies: mediaType;
-    let moviesArray: mediaType;
-    moviesArray = ["test"];
     movies = ["test"];
 
     movies = await handleSearchRequest(url, options, movies);

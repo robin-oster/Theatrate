@@ -1,5 +1,4 @@
 "use server";
-import { FormEvent } from "react";
 import {GetMovieInfo } from "./GetMediaInfo";
 
 export default async function GetTrendingMovies(){
@@ -20,8 +19,6 @@ export default async function GetTrendingMovies(){
 
     let movies: moviesType;
     movies = ["test"];
-    let i: number;
-    i = 0;
 
     await fetch(url, options)
     .then(res => res.json())

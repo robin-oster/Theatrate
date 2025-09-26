@@ -1,25 +1,28 @@
 'use client';
 import Sidebar from "./sidebar";
+import { logout } from "./login/actions";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+
 
 export default function Header(){
-    function handleClick(){
-        const sidebarDisplay = document.getElementById("sidebar")!.style.display;
-        if(sidebarDisplay != 'none'){
-            document.getElementById('sidebar')!.style.display = 'none';
-        }
-        else{
-            document.getElementById('sidebar')!.style.display = 'block';
-        }
-    }
 
     function handleMovies(){
-        document.getElementById('trendingMovies')!.style.display = 'block';
-        document.getElementById('trendingShows')!.style.display = 'none';
+        if(document.getElementById('trendingMovies')){
+            document.getElementById('trendingMovies')!.style.display = 'block';
+            document.getElementById('trendingShows')!.style.display = 'none';
+        } else {
+            redirect('/');
+        }
     }
 
     function handleShows(){
-        document.getElementById('trendingShows')!.style.display = 'block';
-        document.getElementById('trendingMovies')!.style.display = 'none';
+        if(document.getElementById('trendingMovies')){
+            document.getElementById('trendingShows')!.style.display = 'block';
+            document.getElementById('trendingMovies')!.style.display = 'none';
+        } else {
+            redirect('/');
+        }
     }
 
     return(
@@ -28,16 +31,16 @@ export default function Header(){
             <div className=" flex w-1/6 h-[8rem] bg-black justify-center items-center">
                 <h1 className="md:text-3xl font-bold">T h e a t e r a t e</h1>
             </div>
-            <a href="/" className="w-1/6"><div className="flex w-[100%] h-[8rem] justify-center items-center hover:bg-black">
+            <Link href={'/'} className="w-1/6"><div className="flex w-[100%] h-[8rem] justify-center items-center hover:bg-black">
                 <h1 className="md:text-3xl font-bold">HOME</h1>
-            </div></a>
+            </div></Link>
             <div className="flex w-1/6 h-[8rem] justify-center items-center hover:bg-black" onClick={handleMovies}>
                 <h1 className="md:text-3xl font-bold">MOVIES</h1>
             </div>
             <div className="flex w-1/6 h-[8rem] justify-center items-center hover:bg-black" onClick={handleShows}>
                 <h1 className="md:text-3xl font-bold">SHOWS</h1>
             </div>
-            <div className="flex w-1/6 h-[8rem] justify-center items-center hover:bg-black" onClick={handleShows}>
+            <div className="flex w-1/6 h-[8rem] justify-center items-center hover:bg-black" onClick={logout}>
                 <h1 className="md:text-3xl font-bold">LOG OUT</h1>
             </div>
         </div>
