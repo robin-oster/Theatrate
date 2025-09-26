@@ -5,6 +5,7 @@ import { createClient } from "../../utils/supabase/server";
 import Footer from "./footer";
 import GetTrendingMovies from "./api/trendingMovies";
 import GetTrendingShows from "./api/trendingShows";
+import { Suspense } from "react";
 
 export default async function LandingPage(){
     const supabase = await createClient();
@@ -18,7 +19,9 @@ export default async function LandingPage(){
         <div className="bg-red-800 w-auto">
             <Header/>
             <div className="w-auto" id="searchMovies">
+                <Suspense>
                 <SearchForm />
+                </Suspense>
             </div>
             <div className="w-auto" id="trendingMovies">
                 <GetTrendingMovies/>

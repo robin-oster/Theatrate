@@ -4,6 +4,9 @@ import Footer from "../footer";
 import Header from "../header";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Suspense } from "react";
+
+
 
 export default function SearchPage(){
     const [searchedMedia, setSearchedMedia] = useState(<p></p>);
