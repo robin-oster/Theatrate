@@ -2,8 +2,7 @@
 import SearchMovies from "../api/searchMovies"; //server action
 import Footer from "../footer";
 import Header from "../header";
-import Form from "next/form";
-import { redirect, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function SearchPage(){

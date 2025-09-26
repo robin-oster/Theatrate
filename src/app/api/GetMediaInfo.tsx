@@ -10,7 +10,7 @@ interface moviesType {
 function handleRatingUpdated(e: FormEvent<HTMLFormElement>, id: string){
     const { target } = e;
     if (target instanceof HTMLElement){
-        let doc = document.getElementById(id);
+        const doc = document.getElementById(id);
         if(doc){
             doc.className = "block p-2 m-2 bold font-bold text-xl";
         }

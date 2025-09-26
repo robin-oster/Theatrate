@@ -5,8 +5,6 @@ import { createClient } from "../../utils/supabase/server";
 import Footer from "./footer";
 import GetTrendingMovies from "./api/trendingMovies";
 import GetTrendingShows from "./api/trendingShows";
-import SearchMovies from "./api/searchMovies";
-import Form from "next/form";
 
 export default async function LandingPage(){
     const supabase = await createClient();

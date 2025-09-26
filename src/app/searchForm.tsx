@@ -1,6 +1,6 @@
 "use client";
 import Form from "next/form";
-import { MouseEventHandler, useState } from "react";
+import { useState } from "react";
 
 export default function SearchForm(){
 

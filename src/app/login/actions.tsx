@@ -3,13 +3,12 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "../../../utils/supabase/server";
-import { AuthApiError } from "@supabase/supabase-js";
 
 
 
 export async function logout(){
     const supabase = await createClient();
-    let { error } = await supabase.auth.signOut();
+    const { error } = await supabase.auth.signOut();
     
     if (error != null) {
         console.log(error.code);
