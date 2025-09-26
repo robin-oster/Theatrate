@@ -2,29 +2,21 @@
 import SearchMovies from "../api/searchMovies"; //server action
 import Footer from "../footer";
 import Header from "../header";
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import UpdatedSearchedMedia from "./UpdatedSearchedMedia";
 import { Suspense } from "react";
 
 
 
 export default function SearchPage(){
-    const [searchedMedia, setSearchedMedia] = useState(<p></p>);
 
-    const searchParams = useSearchParams();
-    const query = searchParams.get('query') as string;
-    const mediaType = searchParams.get('mediaType') as string;
-    const queryText = encodeURIComponent(query);
-    useEffect(() => {
-        const updatedMedia = SearchMovies({queryText}, mediaType);
-        updatedMedia.then(movies => {setSearchedMedia(movies)})
-    }, [])
 
     return(
         <div className="bg-red-800 w-auto">
             <Header/>
                 <div className="w-auto" id="searchMovies">
-                    {searchedMedia}
+                    <Suspense>
+                        <UpdatedSearchedMedia />
+                    </Suspense>
                 </div>
             <Footer/>
         </div>

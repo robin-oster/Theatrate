@@ -19,9 +19,7 @@ export default async function LandingPage(){
         <div className="bg-red-800 w-auto">
             <Header/>
             <div className="w-auto" id="searchMovies">
-                <Suspense>
                 <SearchForm />
-                </Suspense>
             </div>
             <div className="w-auto" id="trendingMovies">
                 <GetTrendingMovies/>
