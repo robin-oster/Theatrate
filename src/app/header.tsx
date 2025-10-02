@@ -34,12 +34,12 @@ export default function Header(){
             <Link href={'/'} className="w-1/6"><div className="flex w-[100%] h-[8rem] justify-center items-center hover:bg-black">
                 <h1 className="md:text-3xl font-bold">HOME</h1>
             </div></Link>
-            <div className="flex w-1/6 h-[8rem] justify-center items-center hover:bg-black" onClick={handleMovies}>
+            <Link href={'/'} className="w-1/6"><div className="flex w-[100%] h-[8rem] justify-center items-center hover:bg-black">
                 <h1 className="md:text-3xl font-bold">MOVIES</h1>
-            </div>
-            <div className="flex w-1/6 h-[8rem] justify-center items-center hover:bg-black" onClick={handleShows}>
+            </div></Link>
+            <Link href={'/shows'} className="w-1/6"><div className="flex w-[100%] h-[8rem] justify-center items-center hover:bg-black">
                 <h1 className="md:text-3xl font-bold">SHOWS</h1>
-            </div>
+            </div></Link>
             <div className="flex w-1/6 h-[8rem] justify-center items-center hover:bg-black" onClick={logout}>
                 <h1 className="md:text-3xl font-bold">LOG OUT</h1>
             </div>

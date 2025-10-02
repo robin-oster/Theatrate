@@ -1,10 +1,10 @@
-import Header from "./header";
-import SearchForm from "./searchForm";
+import Header from "../header";
+import SearchForm from "../searchForm";
 import { redirect } from "next/navigation";
-import { createClient } from "../../utils/supabase/server";
-import Footer from "./footer";
-import GetTrendingMovies from "./api/trendingMovies";
-import GetTrendingShows from "./api/trendingShows";
+import { createClient } from "../../../utils/supabase/server";
+import Footer from "../footer";
+import GetTrendingMovies from "../api/trendingMovies";
+import GetTrendingShows from "../api/trendingShows";
 import { Suspense } from "react";
 
 export default async function LandingPage(){
@@ -21,8 +21,8 @@ export default async function LandingPage(){
             <div className="w-auto" id="searchMovies">
                 <SearchForm />
             </div>
-            <div className="w-auto" id="trendingMovies">
-                <GetTrendingMovies/>
+            <div className="w-auto" id="trendingShows">
+                <GetTrendingShows/>
             </div>
             <Footer/>
         </div>
